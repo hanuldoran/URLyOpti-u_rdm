@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://192.168.56.55:3306/urlyopti
+    username: urlyopti
+    password: dev001
