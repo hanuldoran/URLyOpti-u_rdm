@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <property name="LOG_HOME" value="/home/urlyopti/u_log/u_rdm" />
+    <property name="LOG_FILE" value="urlyopti" />
+
+    <!-- 로그의 파일 출력 -->
+    <!-- 이전 버전에서 rolling 할 때는 name="ROLLING_FILE" 사용하였으나, FILE로 통일됨-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 로그 파일 경로 -->
+        <file>${LOG_HOME}/${LOG_FILE}.log</file>
+
+        <!-- Rolling 정책 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/${LOG_FILE}_%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>14</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+
+        <!-- 파일 내 로그 출력패턴 -->
+        <encoder>
+            <charset>utf8</charset>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %thread [%X{traceId}] %-5level %logger - %m%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 로그의 콘솔 출력 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- root level 중복 출력 방지 옵션 additivity="false" 사용 -->
+    <logger name="com.semperpi.urlyopti" level="INFO" additivity="true">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <logger name="com.semperpi.urlyopti.connector" level="DEBUG" additivity="false">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <!-- root level을 콘솔 출력(STDOUT)으로 정의 -->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta property="og:title" content="URLyOpti">
+    <meta property="og:image" content="/images/urlyopti.jpg">
+    <meta property="og:description" content="URLyOpti(캠페인인입현황)">
+    <meta name="og:image" property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:title" content="URLyOpti">
+    <meta name="twitter:image" content="/images/urlyopti.jpg">
+    <meta property="og:description" content="URLyOpti(캠페인인입현황)">
+
+    <title>URLyOpti</title>
+
+    <link href="/images/urlyopti.ico" rel="shortcut icon">
+
+    <link rel="stylesheet" type="text/css" href="/css/prsStd.css">
+</head>
+
+<body>
+
+    <!-- 조회 조건 영역 -->
+    <section>
+        <fieldset>
+            <div class="wrap">
+                <div class="dvs2l_90p">
+                    <label for="schCmpNm" class="width100">캠페인명</label>
+                    <input type="text" id="schCmpNm" name="schCmpNm" class="width200">
+
+                    <span class="width040">&nbsp;</span>
+
+                    <label for="schCmpDat" class="width080">캠페인일자</label>
+                    <input type="text" id="schCmpDat" name="schCmpDat" class="width200">
+                </div>
+
+                <div class="dvs2r_10p right">
+                    <input type="button" value="조회" class="width060" onClick="toDo();">
+                </div>
+            </div>
+        </fieldset>
+    </section>
+
+    <!-- 버튼 영역 -->
+    <section>
+        <div class="wrap">
+            <div class="dvs2_50p">
+                <input type="button" value="엑셀다운로드" class="width120" onClick="toDo();">
+            </div>
+
+            <div class="dvs2_50p right">
+                <label class="right">전체 ${count}를</label>
+                <select size="1" id="schPagPerNmb" name="schPagPerNmb" onChange="toDo();">
+                    <option value="10">10개씩 보기</option>
+                    <option value="20" selected>20개씩 보기</option>
+                    <option value="30">30개씩 보기</option>
+                    <option value="50">50개씩 보기</option>
+                    <option value="100">100개씩 보기</option>
+                </select>
+                <input type="button" value="〈" class="width030"  onClick="toDo()">
+                <input type="text" id="CRT_PAG" name="crtPag" class="width030 center" value="1">
+                <label class="width080 center">of ${total}</label>
+                <input type="button" value="〉" class="width030" onClick="toDo()">
+            </div>
+        </div>
+    </section>
+
+    <!-- 조회결과 리스트 영역 -->
+    <section>
+        <table id="SCH_RST_LST" class="schRstLst">
+            <caption class="normal right">
+                ※
+                완료율1 : 전체 대상수 대비 완료수
+                &nbsp; &nbsp; 
+                ※
+                완료율2 : 인입수 대비 완료수
+            </caption>
+            <colgroup>
+                <col width="100"><!-- 캠페인명 -->
+                <col width="300"><!-- 상세설명 -->
+                <col width="100"><!-- 시작일시 -->
+                <col width="100"><!-- 종료일시 -->
+                <col width="50"><!-- Step수 -->
+                <col width="80"><!-- 전체 대상수 -->
+                <col width="50"><!-- 인입수 -->
+                <col width="50"><!-- 완료수 -->
+                <col width="50"><!-- 완료율1 -->
+                <col width="50"><!-- 완료율2 -->
+                <col width="50"><!-- RDM수 -->
+            </colgroup>
+            <thead>
+                <tr class="height035">
+                    <th>캠페인명</th>
+                    <th>상세설명</th>
+                    <th>시작일시</th>
+                    <th>종료일시</th>
+                    <th>Step수</th>
+                    <th>전체 대상수</th>
+                    <th>인입수</th>
+                    <th>완료수</th>
+                    <th>완료율1</th>
+                    <th>완료율2</th>
+                    <th>RDM수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- tr class="height030">
+                    <td colspan="7">검색 조건을 입력 후 조회 버튼을 선택하세요.</td>
+                </tr -->
+                <tr class="height030 odd"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td class="left lpadding006">신규 가입 이벤트</td>
+                    <td class="left lpadding006">캠페인을 위한 모든 정보를 입력한 상태</td>
+                    <td class="center">2023-02-01 24H</td>
+                    <td class="center">2023-02-28 24H</td>
+                    <td class="right rpadding006">7</td>
+                    <td class="right rpadding006">102,386</td>
+                    <td class="right rpadding006"></td>
+                    <td class="right rpadding006"></td>
+                    <td class="right rpadding006"></td>
+                    <td class="right rpadding006"></td>
+                    <td class="right rpadding006"></td>
+                </tr>
+                <tr class="height030 evn"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'evn');">
+                    <td class="left lpadding006">정보 수정 이벤트</td>
+                    <td class="left lpadding006">마케팅동의를 한 고객에게 쿠폰 제공</td>
+                    <td class="center">2023-01-30 12H</td>
+                    <td class="center">2023-02-03 12H</td>
+                    <td class="right rpadding006">7</td>
+                    <td class="right rpadding006">12,423</td>
+                    <td class="right rpadding006">906</td>
+                    <td class="right rpadding006">5</td>
+                    <td class="right rpadding006">0.04 %</td>
+                    <td class="right rpadding006">2</td>
+                    <td class="right rpadding006">2</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+
+<script src="/js/bhvStd.js"></script>
+<script>
+/**
+ * RecordID에 대한 상세정보를 조회
+ * @param recordId - 선택한 행의 아이디
+ * @return String - 상세정보를 표시하기 위한 html 코드
+ */
+function getRecordDetail(recordId)
+{
+    let txtHTML = '';
+    txtHTML += '<div style="background-color: #e7f9ff; padding: 10px;">';
+    txtHTML += '<table style="width: 100%; border-width: 0px;">';
+    txtHTML +=   '<tr style="border-width: 0px;">';
+    txtHTML +=     '<td style="width: 80px; border-width: 0px; background-color: #e7f9ff;">기간</td>';
+    txtHTML +=     '<td style="border-width: 0px; background-color: #e7f9ff;">2022-07-01 12시 ~ 2022-07-14 12시</td>';
+    txtHTML +=   '</tr>';
+    txtHTML +=   '<tr style="border-width: 0px;">';
+    txtHTML +=     '<td style="width: 80px; border-width: 0px; background-color: #e7f9ff;">상세설명</td>';
+    txtHTML +=     '<td style="border-width: 0px; background-color: #e7f9ff;">90일이상 홈페이지에 접속하지 않은 고객 중에서 패스워드 변경 기간이 만료되어 가는 고객들을 대상으로, 홈페이지 접속에 접속하여 마케팅 관련 고객 동의를 획득할 수 있도록 유도한다.</td>';
+    txtHTML +=   '</tr>';
+    txtHTML += '';
+    txtHTML += '</table>';
+    txtHTML += '</div>';
+
+    return txtHTML;
+}
+
+/**
+ * cmpTmpLst UI에서 [추가] 버튼 클릭 또는 조회결과 테이블에서 행 더블클릭 시 캠페인템플릿상세 UI 호출
+ * @param cmpTmpId - 캠페인템플릿아이디
+ */
+function openCmpDtl(cmpId)
+{
+    // 메뉴 제목
+    let ttl = "캠페인 상세";
+
+    // 메뉴 경로
+    let pth = window.parent.document.getElementById("MNU_PTH").innerHTML;
+
+    // 메뉴 URL
+    let url = "./cmpDtl.html";
+
+    // 화면 이동 함수 호출
+    window.parent.openContents(ttl, pth, cmpId, url);
+}
+</script>
+
+</html>

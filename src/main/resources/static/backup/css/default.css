@@ -1,0 +1,62 @@
+@charset "UTF-8";
+*
+{
+    box-sizing: border-box; 
+}
+
+body, th, td
+{
+    margin: 0px;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+/*
+header
+{
+    height: 45px;
+    padding: 10px;
+    border-bottom: 1px solid #a3a3a3;
+}
+
+aside
+{
+    float: left;
+    width: 270px;
+}
+
+main
+{
+    min-height: 650px;
+    margin-left: 270px;
+    border-left: 1px solid #a3a3a3;
+    padding: 10px;
+}
+
+footer
+{
+    border-top: 1px solid #a3a3a3;
+    padding: 10px;
+}
+
+.left
+{
+    text-align: left;
+}
+.center
+{
+    text-align: center;
+}
+.right
+{
+    text-align: right;
+}
+
+.labelFor
+{
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+    border: 1 solid #ff0000;
+}
+*/

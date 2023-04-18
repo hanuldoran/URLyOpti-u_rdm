@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta property="og:title" content="URLyOpti">
+    <meta property="og:image" content="/images/urlyopti.jpg">
+    <meta property="og:description" content="URLyOpti(메시지템플릿목록)">
+    <meta name="og:image" property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:title" content="URLyOpti">
+    <meta name="twitter:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:description" content="URLyOpti-(메시지템플릿목록)">
+
+    <title>URLyOpti</title>
+
+    <link href="/images/urlyopti.ico" rel="shortcut icon">
+
+    <link rel="stylesheet" type="text/css" href="/css/prsStd.css">
+</head>
+
+<body>
+
+    <!-- 조회 조건 영역 -->
+    <section>
+        <fieldset>
+            <div class="wrap">
+                <div class="dvs2l_90p">
+                    <label for="schMsgId" class="width080">메시지ID</label>
+                    <input type="text" id="schMsgId" name="schMsgId" class="width100">
+
+                    <span class="width040">&nbsp;</span>
+
+                    <label for="schMsgTtl" class="width100">메시지제목</label>
+                    <input type="text" id="schMsgTtl" name="schMsgTtl" class="width200">
+                </div>
+
+                <div class="dvs2r_10p right">
+                    <input type="button" value="조회" class="width060" onClick="toDo();">
+                </div>
+            </div>
+        </fieldset>
+    </section>
+
+    <!-- 버튼 영역 -->
+    <section>
+        <div class="wrap">
+            <div class="dvs2_50p">
+                <input type="button" value="추가" class="width060" onClick="clickSchRstRow('', '메시지템플릿 추가', 800, 320);">
+                <input type="button" value="삭제" class="width060" onClick="toDo();">
+                <input type="button" value="엑셀다운로드" class="width120" onClick="toDo();">
+            </div>
+
+            <div class="dvs2_50p right">
+                <label class="right">전체 ${count}를</label>
+                <select size="1" id="schPagPerNmb" name="schPagPerNmb" onChange="toDo();">
+                    <option value="10">10개씩 보기</option>
+                    <option value="20" selected>20개씩 보기</option>
+                    <option value="30">30개씩 보기</option>
+                    <option value="50">50개씩 보기</option>
+                    <option value="100">100개씩 보기</option>
+                </select>
+                <input type="button" value="〈" class="width030"  onClick="toDo()">
+                <input type="text" id="CRT_PAG" name="crtPag" class="width030 center" value="1">
+                <label class="width080 center">of ${total}</label>
+                <input type="button" value="〉" class="width030" onClick="toDo()">
+            </div>
+        </div>
+    </section>
+
+    <!-- 조회결과 리스트 영역 -->
+    <section>
+        <table id="SCH_RST_LST" class="schRstLst">
+            <colgroup>
+                <col width="30"><!-- 체크박스 -->
+                <col width="80"><!-- 메시지ID -->
+                <col width="80"><!-- 메시지제목 -->
+                <col width="260"><!-- 메시지문구 -->
+                <col width="80"><!-- 최종변경자 -->
+                <col width="140"><!-- 최종변경일 -->
+            </colgroup>
+            <thead>
+                <tr class="height035">
+                    <th onClick="checkAllOrNothing();">√</th>
+                    <th>메시지ID</th>
+                    <th>메시지제목</th>
+                    <th>메시지문구</th>
+                    <th>최종변경자</th>
+                    <th>최종변경일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- tr class="height030">
+                    <td colspan="6">검색 조건을 입력 후 조회 버튼을 선택하세요.</td>
+                </tr -->
+                <tr class="height030 odd"
+                    onClick="clickSchRstRow('LMS_20230001', '메시지템플릿 상세', 800, 380);"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="LMS_20230001"></td>
+                    <td class="left">LMS_20230001</td>
+                    <td class="left">이벤트 쿠폰 수령</td>
+                    <td class="left">~고객님, 고객인증을 하시면 이벤트 쿠폰을 발급받으세요.</td>
+                    <td class="center">P275423</td>
+                    <td class="center">2022-07-03 03:00:00</td>
+                </tr>
+                <tr class="height030 evn"
+                    onClick="clickSchRstRow('KKO_202300001', '메시지템플릿 상세', 800, 380);"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'evn');">
+                    <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="KKO_202300001"></td>
+                    <td class="left">KKO_202300001</td>
+                    <td class="left">Step2 진입 촉진</td>
+                    <td class="left">클릭 한번으로 필요한 정보를 받아 가세요</td>
+                    <td class="center">P275423</td>
+                    <td class="center">2022-06-27 13:23:52</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 추가 영역 -->
+    <section>
+        <div id="POPUP_WRAP" class="popup_wrap" style="display: none;">상세정보 팝업</div>
+    </section>
+</body>
+
+<script src="/js/bhvStd.js"></script>
+<script>
+/**
+ * URL 신규 생성
+ * @return String - 신규 행 생성을 위한 html 코드
+ */
+function getRecordCreate()
+{
+    let txtHTML = '';
+    txtHTML += '<div id="POPUP_BODY">';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="msgId" class="width120 dvsNth left">템플릿ID</label>';
+    txtHTML +=         '<input type="text" id="msgId" name="msgId" class="width200" value="">';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="msgTtl" class="width120 dvsNth left">템플릿명</label>';
+    txtHTML +=         '<input type="text" id="msgTtl" name="msgTtl" class="width200" value="">';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="fstStpYon" class="width120 dvsNth left">메시지문구</label>';
+    txtHTML +=         '<textarea id="msgStc" name="msgStc" rows="5" cols="65" class="dvsNth left"></textarea>';
+    txtHTML +=     '</div>';
+    txtHTML += '</div>';
+
+    return txtHTML;
+}
+
+/**
+ * RecordID에 대한 URL 상세정보 조회
+ * @param recordId - 선택한 행의 아이디
+ * @return String - 상세정보를 표시하기 위한 html 코드
+ */
+function getRecordDetail(recordId)
+{
+    let txtHTML = '';
+    txtHTML += '<div id="POPUP_BODY">';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="msgId" class="width120 dvsNth left">템플릿ID</label>';
+    txtHTML +=         '<input type="text" id="msgId" name="msgId" class="width200" value="KKO_202300001">';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="msgTtl" class="width120 dvsNth left">템플릿명</label>';
+    txtHTML +=         '<input type="text" id="msgTtl" name="msgTtl" class="width200" value="Step2 진입 촉진">';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="fstStpYon" class="width120 dvsNth left">메시지문구</label>';
+    txtHTML +=         '<textarea id="msgStc" name="msgStc" rows="5" cols="65" class="dvsNth left">클릭 한번으로 필요한 정보를 받아 가세요</textarea>';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="lstChgPp" class="width120 dvsNth left">최종변경자</label>';
+    txtHTML +=         '<input type="text" id="lstChgPp" name="lstChgPp" class="width200" value="P275423" readOnly>';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="lstChgDt" class="width120 dvsNth left">최종변경일시</label>';
+    txtHTML +=         '<input type="text" id="lstChgDt" name="lstChgDt" class="width200" value="2022-07-03 03:00:00" readOnly>';
+    txtHTML +=     '</div>';
+    txtHTML += '</div>';
+
+    /*
+    txtHTML += '<div style="background-color: #e7f9ff; padding: 10px;">';
+    txtHTML += '<input type="text" id="msgId" name="msgId" value="KKO_202300001" style="width:100px;">';
+    txtHTML += '<input type="text" id="msgTtl" name="msgTtl" value="" style="width: 100px; margin-left: 10px;">';
+    txtHTML += '';
+    txtHTML +=   '클릭 한번으로 필요한 정보를 받아 가세요';
+    txtHTML += '</textarea>';
+    txtHTML += '<input type="button" value="저장" style="margin-left: 10px;">';
+    txtHTML += '</div>';
+    */
+
+    return txtHTML;
+}
+</script>
+
+</html>

@@ -1,0 +1,84 @@
+@charset "UTF-8";
+.sectionTitle
+{
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+#SCH_CDT_ARE
+{
+    margin: 20px 0px 20px 0px;
+}
+
+#CUD_BTN_ARE, #SCH_PAG_ARE
+{
+    border-width: 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.margin_l_50
+{
+    margin-left: 50px;
+}
+
+#SCH_RST_LST
+{
+    width: 100%;
+    border: 1px solid #595959;
+    border-spacing: 0px;
+}
+
+#SCH_RST_LST thead > tr
+{
+    height: 35px;
+}
+
+#SCH_RST_LST tbody > tr
+{
+    height: 30px;
+}
+
+#SCH_RST_LST thead > tr > th
+{
+    color: #ffffff;
+    background-color: #595959;
+    border-right: 1px solid #ffffff;
+}
+
+#SCH_RST_LST thead > tr > th:last-child
+{
+    border-right: 0px solid #ffffff;
+}
+
+#SCH_RST_LST tbody > tr > td
+{
+    color: #595959;
+    border-right: 1px solid #595959;
+    border-top: 1px solid #595959;
+}
+
+#SCH_RST_LST tbody > tr > td:last-child
+{
+    color: #595959;
+    border-right: 0px solid #595959;
+}
+
+#SCH_RST_LST tbody > tr:nth-child(2n) 
+{
+    background-color: #e7e7e7;
+}
+
+#SCH_RST_LST tbody > tr:nth-child(2n+1) 
+{
+    background-color: #ffffff;
+}
+
+.DTL_EXP_ROW
+{
+    background-color: #e7f9ff;
+}
+
+.OSD_BRD
+{
+    border: 1px solid #595959;
+}

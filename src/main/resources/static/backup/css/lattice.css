@@ -1,0 +1,65 @@
+@charset "UTF-8";
+.float2l
+{
+    float: left;
+    width: 50%;
+}
+.float2r
+{
+    float: right;
+    width: 50%;
+}
+
+.float2l_90
+{
+    float: left;
+    width: 90%;
+}
+.float2r_10
+{
+    float: right;
+    width: 10%;
+}
+
+.float2l_60
+{
+    float: left;
+    width: 60%;
+}
+.float2r_40
+{
+    float: right;
+    width: 40%;
+}
+
+.float3l
+{
+    float: left;
+    width: 33%;
+}
+.float3r
+{
+    float: right;
+    width: 34%;
+}
+
+.float3l_25
+{
+    float: left;
+    width: 25%;
+}
+.float3l_50
+{
+    float: left;
+    width: 50%;
+}
+.float3r_25
+{
+    float: right;
+    width: 25%;
+}
+.float3r_50
+{
+    float: right;
+    width: 50%;
+}

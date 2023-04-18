@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta property="og:title" content="URLyOpti">
+    <meta property="og:image" content="/images/urlyopti.jpg">
+    <meta property="og:description" content="URLyOpti-네비게이션">
+    <meta name="og:image" property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:title" content="URLyOpti">
+    <meta name="twitter:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:description" content="URLyOpti-네비게이션">
+
+    <title>URLyOpti</title>
+
+    <link href="/images/urlyopti.ico" rel="shortcut icon">
+
+    <style type="text/css">
+        li.navLnk
+        {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body onLoad="loadPage();">
+    <div>
+        <div id="CST_NM" style="padding: 10px;"></div>
+    </div>
+    <ul>
+        <li class="navLnk" onClick="clickNavigation(this, '현황/통계 &gt; 대시보드', '/lyt/dsb'   );">대시보드</li>
+        <li>
+            캠페인
+            <ul>
+                <li class="navLnk" onClick="clickNavigation(this, '캠페인 &gt; 캠페인 관리', '/cmp/cmpLst'   );">캠페인 목록</li>
+                <li class="navLnk" onClick="clickNavigation(this, '캠페인 &gt; 캠페인 관리', '/cmp/cmpObjLst');">캠페인 대상 목록</li>
+                <li class="navLnk" onClick="clickNavigation(this, '캠페인 &gt; 캠페인 관리', '/cmp/ukyLog');">u-key 로그</li>
+                <li class="navLnk" onClick="clickNavigation(this, '캠페인 &gt; 템플릿 관리', '/cmp/cmpTmpLst');">템플릿 목록</li>
+            </ul>
+        </li>
+        <li>
+            기준정보
+            <ul>
+                <li class="navLnk" onClick="clickNavigation(this, '기준정보 &gt; URL목록',     '/stdIfm/urlLst'   );">URL 목록</li>
+                <li class="navLnk" onClick="clickNavigation(this, '기준정보 &gt; URL-SET목록', '/stdIfm/urlSetLst');">URL-SET 목록</li>
+                <li class="navLnk" onClick="clickNavigation(this, '기준정보 &gt; 메시지목록',  '/stdIfm/msgLst'   );">메시지 목록</li>
+            </ul>
+        </li>
+        <li>
+            현황/통계
+            <ul>
+                <li class="navLnk" onClick="clickNavigation(this, '현황/통계 &gt; 캠페인별인입현황', '/prcStt/cmpLdiPrc');">캠페인별인입현황</li>
+                <li class="navLnk" onClick="clickNavigation(this, '현황/통계 &gt; 고객반응현황',     '/prcStt/cstRatPrc');">고객반응현황</li>
+            </ul>
+        </li>
+        <li class="navLnk" onClick="clickLogout();">로그아웃</li>
+    </ul>
+</body>
+
+<script>
+/**
+ * 페이지 로딩이 완료된 후 레이아웃의 넓이와 높이를 결정하고, 화면에 표시
+ */
+function loadPage()
+{
+    // 아이디로 조회한 사용자 정보 표시
+    document.getElementById("CST_NM").innerText = "[${사용자} 님]"
+}
+
+/**
+ * 메뉴 클릭 시 화면 이동
+ * @param mnuObj - 메뉴 객체
+ * @param mnuPth - 메뉴의 구조에서 경로(물리적인 파일 경로가 아님)
+ * @param mnuUri - 메뉴의 url
+ */
+function clickNavigation(mnuObj, mnuPth, mnuUri)
+{
+    // 화면 이동 함수 호출
+    window.parent.openContents(mnuObj.innerText, mnuPth, '', mnuUri + ".html");
+}
+
+/**
+ * 로그아웃 후 로그인 화면으로 이동
+ */
+function clickLogout(mnuObj, mnuPth, mnuUri)
+{
+    window.parent.document.location.href = "/index.html";
+}
+</script>
+</html>

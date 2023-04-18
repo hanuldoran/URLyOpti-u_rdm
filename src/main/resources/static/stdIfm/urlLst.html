@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta property="og:title" content="URLyOpti">
+    <meta property="og:image" content="/images/urlyopti.jpg">
+    <meta property="og:description" content="URLyOpti(URL목록)">
+    <meta name="og:image" property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:title" content="URLyOpti">
+    <meta name="twitter:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:description" content="URLyOpti-(URL목록)">
+
+    <title>URLyOpti</title>
+
+    <link href="/images/urlyopti.ico" rel="shortcut icon">
+
+    <link rel="stylesheet" type="text/css" href="/css/prsStd.css">
+</head>
+
+<body>
+
+    <!-- 조회 조건 영역 -->
+    <section>
+        <fieldset>
+            <div class="wrap">
+                <div class="dvs2l_90p">
+                    <label for="schUrl" class="width040">URL</label>
+                    <input type="text" id="schUrl" name="schUrl" class="width500">
+
+                    <span class="width040">&nbsp;</span>
+
+                    <label for="schUrlNm" class="width060">URL명</label>
+                    <input type="text" id="schUrlNm" name="schUrlNm" class="width200">
+
+                    <label for="schFstStpYon" class="width100">Step1 여부</label>
+                    <select size="1" id="schFstStpYon" id="schFstStpYon">
+                        <option value="ALL" selected>전부</option>
+                        <option value="Y">예</option>
+                        <option value="N">아니오</option>
+                    </select>
+                </div>
+
+                <div class="dvs2r_10p right">
+                    <input type="button" value="조회" class="width060" onClick="toDo();">
+                </div>
+            </div>
+        </fieldset>
+    </section>
+
+    <!-- 버튼 영역 -->
+    <section>
+        <div class="wrap">
+            <div class="dvs2_50p">
+                <input type="button" value="추가" class="width060" onClick="clickSchRstRow('', 'URL 추가', 800, 250);">
+                <input type="button" value="삭제" class="width060" onClick="toDo();">
+                <input type="button" value="엑셀다운로드" class="width120" onClick="toDo();">
+            </div>
+
+            <div class="dvs2_50p right">
+                <label class="right">전체 ${count}를</label>
+                <select size="1" id="schPagPerNmb" name="schPagPerNmb" onChange="toDo();">
+                    <option value="10">10개씩 보기</option>
+                    <option value="20" selected>20개씩 보기</option>
+                    <option value="30">30개씩 보기</option>
+                    <option value="50">50개씩 보기</option>
+                    <option value="100">100개씩 보기</option>
+                </select>
+                <input type="button" value="〈" class="width030"  onClick="toDo()">
+                <input type="text" id="CRT_PAG" name="crtPag" class="width030 center" value="1">
+                <label class="width080 center">of ${total}</label>
+                <input type="button" value="〉" class="width030" onClick="toDo()">
+            </div>
+        </div>
+    </section>
+
+    <!-- 조회결과 리스트 영역 -->
+    <section>
+        <table id="SCH_RST_LST" class="schRstLst">
+            <colgroup>
+                <col width="30"><!-- 체크박스 -->
+                <col width="200"><!-- URL -->
+                <col width="100"><!-- URL명 -->
+                <col width="60"><!-- Step1 여부 -->
+                <col width="80"><!-- 최종변경자 -->
+                <col width="140"><!-- 최종변경일 -->
+            </colgroup>
+            <thead>
+                <tr class="height035">
+                    <th onClick="checkAllOrNothing();">√</th>
+                    <th>URL</th>
+                    <th>URL명</th>
+                    <th>Step1 여부</th>
+                    <th>최종변경자</th>
+                    <th>최종변경일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- tr class="height030">
+                    <td colspan="6">검색 조건을 입력 후 조회 버튼을 선택하세요.</td>
+                </tr -->
+                <tr class="height030 odd"
+                    onClick="clickSchRstRow('KKO20230001', 'URL 상세', 800, 320);"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="KKO20230001"></td>
+                    <td class="left lpadding006">https://user.domain.com/campaign/view/step1.html</td>
+                    <td class="left lpadding006">신규가입</td>
+                    <td class="center">√</td>
+                    <td class="center">P275423</td>
+                    <td class="center">2022-07-03 03:00:00</td>
+                </tr>
+                <tr class="height030 evn"
+                    onClick="clickSchRstRow('CMP20230001', 'URL 상세', 800, 320);"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'evn');">
+                    <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="CMP20230001"></td>
+                    <td class="left lpadding006">https://user.domain.com/campaign/view/step2.html</td>
+                    <td class="left lpadding006">ID검증</td>
+                    <td class="center">&nbsp;</td>
+                    <td class="center">P275423</td>
+                    <td class="center">2022-06-27 13:23:52</td>
+                </tr>
+                <tr class="height030 odd"
+                    onClick="clickSchRstRow('CMP202300002', 'URL 상세', 800, 320);"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="CMP202300002"></td>
+                    <td class="left lpadding006">https://user.domain.com/campaign/view/step3.html</td>
+                    <td class="left lpadding006">정보제공동의</td>
+                    <td class="center">&nbsp;</td>
+                    <td class="center">P342516</td>
+                    <td class="center">2022-06-15 15:00:00</td>
+                </tr>
+                <tr class="height030 evn"
+                    onClick="clickSchRstRow('CMP202300003', 'URL 상세', 800, 320);"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'evn');">
+                    <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="CMP202300003"></td>
+                    <td class="left lpadding006">https://user.domain.com/campaign/view/step4.html</td>
+                    <td class="left lpadding006">광고수신동의</td>
+                    <td class="center">&nbsp;</td>
+                    <td class="center">P323564</td>
+                    <td class="center">2022-06-17 10:21:32</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 추가 영역 -->
+    <section>
+        <div id="POPUP_WRAP" class="popup_wrap" style="display: none;">상세정보 팝업</div>
+    </section>
+</body>
+
+<script src="/js/bhvStd.js"></script>
+<script>
+/**
+ * URL 신규 생성
+ * @return String - 신규 행 생성을 위한 html 코드
+ */
+function getRecordCreate()
+{
+    let txtHTML = '';
+    txtHTML += '<div id="POPUP_BODY">';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="url" class="width120 dvsNth left">URL</label>';
+    txtHTML +=         '<input type="text" id="url" name="url" class="width600" value="">';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="urlNm" class="width120 dvsNth left">URL명</label>';
+    txtHTML +=         '<input type="text" id="urlNm" name="urlNm" class="width200" value="">';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="fstStpYon" class="width120 dvsNth left">Step1 여부</label>';
+    txtHTML +=         '<input type="checkbox" id="fstStpYon" name="fstStpYon" value="Y">';
+    txtHTML +=     '</div>';
+    txtHTML += '</div>';
+
+    return txtHTML;
+}
+
+/**
+ * RecordID에 대한 URL 상세정보 조회
+ * @param recordId - 선택한 행의 아이디
+ * @return String - 상세정보를 표시하기 위한 html 코드
+ */
+function getRecordDetail(recordId)
+{
+    let txtHTML = '';
+    txtHTML += '<div id="POPUP_BODY">';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="url" class="width120 dvsNth left">URL</label>';
+    txtHTML +=         '<input type="text" id="url" name="url" class="width600" value="https://user.domain.com/campaign/view/step1.html">';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="urlNm" class="width120 dvsNth left">URL명</label>';
+    txtHTML +=         '<input type="text" id="urlNm" name="urlNm" class="width200" value="신규가입">';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="fstStpYon" class="width120 dvsNth left">Step1 여부</label>';
+    txtHTML +=         '<input type="checkbox" id="fstStpYon" name="fstStpYon" value="Y">';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="lstChgPp" class="width120 dvsNth left">최종변경자</label>';
+    txtHTML +=         '<input type="text" id="lstChgPp" name="lstChgPp" class="width200" value="P275423" readOnly>';
+    txtHTML +=     '</div>';
+    txtHTML +=     '<div class="wrap margin004">';
+    txtHTML +=         '<label for="lstChgDt" class="width120 dvsNth left">최종변경일시</label>';
+    txtHTML +=         '<input type="text" id="lstChgDt" name="lstChgDt" class="width200" value="2022-07-03 03:00:00" readOnly>';
+    txtHTML +=     '</div>';
+    txtHTML += '</div>';
+
+    return txtHTML;
+}
+</script>
+
+</html>

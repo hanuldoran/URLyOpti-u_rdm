@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta property="og:title" content="URLyOpti">
+    <meta property="og:image" content="/images/urlyopti.jpg">
+    <meta property="og:description" content="URLyOpti-캠페인템플릿상세">
+    <meta name="og:image" property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:title" content="URLyOpti">
+    <meta name="twitter:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:description" content="URLyOpti-캠페인템플릿상세">
+
+    <title>URLyOpti</title>
+
+    <link href="/images/urlyopti.ico" rel="shortcut icon">
+
+    <link rel="stylesheet" type="text/css" href="/css/prsStd.css">
+</head>
+
+<body>
+
+    <!-- 캠페인정보 영역 -->
+    <section>
+        <fieldset>
+            <legend>★ 캠페인정보(필수)</legend>
+            <div class="wrap margin004">
+                <label for="cmpNm" class="width120 dvsNth tpadding006">템플릿명</label>
+                <input type="text" id="cmpNm" name="cmpNm" class="width200 dvsNth">
+            </div>
+            <div class="wrap margin004">
+                <label for="dtlExp" class="width120 dvsNth tpadding006">상세설명</label>
+                <textarea id="dtlExp" name="dtlExp" rows="5" cols="120" class="dvsNth"></textarea>
+            </div>
+            <div class="wrap margin004">
+                <label class="width120 dvsNth">&nbsp;</label>
+                <input type="button" value="URL-SET 가져오기" class="width160 dvsNth" onClick="toDo();">
+            </div>
+            <div class="wrap margin004">
+                <label for="fstStp" class="width120 dvsNth tpadding006"">Step1</label>
+                <input type="text" id="fstStp" name="fstStp" readOnly class="width800 dvsNth">
+                <span class="width010 dvsNth">&nbsp;</span>
+                <input type="button" value="Step1 RDM등록" class="width170 dvsNth" onClick="toDo();">
+            </div>
+            <div class="wrap margin004">
+                <label for="fstStp" class="width120 dvsNth tpadding006"">Step2</label>
+                <input type="text" id="fstStp" name="fstStp" readOnly class="width800 dvsNth">
+                <span class="width010 dvsNth">&nbsp;</span>
+                <input type="button" value="Step2 RDM등록" class="width170 dvsNth" onClick="toDo();">
+            </div>
+            <div class="wrap margin004">
+                <label for="fstStp" class="width120 dvsNth tpadding006"">Step3</label>
+                <input type="text" id="fstStp" name="fstStp" readOnly class="width800 dvsNth">
+                <span class="width010 dvsNth">&nbsp;</span>
+                <input type="button" value="Step3 RDM등록" class="width170 dvsNth" onClick="toDo();">
+            </div>
+            <div class="wrap margin004">
+                <label class="width120 dvsNth tpadding006"">RDM 중복추출</label>
+                <label class="width080 dvsNth tpadding004">
+                    <input type="radio" id="rdmDplYonY" name="rdmDplYon" value="Y" disabled>
+                    <span>허용</span>
+                </label>
+                <label class="width200 dvsNth tpadding004">
+                    <input type="radio" id="rdmDplYonN" name="rdmDplYon" value="N" checked>
+                    <span>허용하지 않음</span>
+                </label>
+            </div>
+        </fieldset>
+    </section>
+
+    <!-- RDM정보 영역 -->
+    <section>
+        <fieldset>
+            <legend>★ RDM정보(선택)</legend>
+            <div class="wrap margin004">
+                <label class="width120 dvsNth tpadding006">추출조건</label>
+                <div class="dvsNth">
+                    <label class="width1200">
+                        <select size="1" id="urlSetOrd" name="urlSetOrd" class="width800" disabled>
+                            <option value="1">Step1 - https://user.domain.com/campaign/view/step1.html</option>
+                            <option value="2" selected>Step2 - https://user.domain.com/campaign/view/step2.html</option>
+                            <option value="3">Step3 - https://user.domain.com/campaign/view/step3.html</option>
+                            <option value="4">Step4 - https://user.domain.com/campaign/view/step4.html</option>
+                            <option value="5">Step5 - https://user.domain.com/campaign/view/step5.html</option>
+                        </select>
+                        <span>화면에 진입한 고객 중</span>
+                    </label>
+                    <br>
+                    <label class="width1200 tmargin004">
+                        <select size="1" id="pssTim" name="pssTim" class="width60">
+                            <option value="3">3시간</option>
+                            <option value="6" selected>6시간</option>
+                            <option value="9">9시간</option>
+                            <option value="12">12시간</option>
+                            <option value="24">1일</option>
+                            <option value="48">2일</option>
+                        </select>
+                        <span>화면에 진입한 고객 중</span>
+                    </label>
+                    <br>
+                    <label class="width1200 tmargin004">
+                        <select size="1" id="urlSetOrd" name="urlSetOrd" class="width800">
+                            <option value="1">Step1 - https://user.domain.com/campaign/view/step1.html</option>
+                            <option value="2">Step2 - https://user.domain.com/campaign/view/step2.html</option>
+                            <option value="3">Step3 - https://user.domain.com/campaign/view/step3.html</option>
+                            <option value="4">Step4 - https://user.domain.com/campaign/view/step4.html</option>
+                            <option value="5" selected>Step5 - https://user.domain.com/campaign/view/step5.html</option>
+                        </select>
+                        <span>단계까지 완료하지 않은 고객</span>
+                    </label>
+                </div>
+            </div>
+            <div class="wrap margin004">
+                <label class="width120 dvsNth">RDM 메시지</label>
+                <input type="button" value="가져오기" class="width100 dvsNth" onClick="toDo();">
+            </div>
+            <div class="wrap margin004">
+                <label class="width120 dvsNth">&nbsp;</label>
+                <input type="text" id="msgId" name="msgId" readOnly class="width200 dvsNth">
+                <span class="width040 dvsNth">&nbsp;</span>
+                <input type="text" id="msgNm" name="msgNm" readOnly class="width200 dvsNth">
+            </div>
+            <div class="wrap margin004">
+                <label class="width120 dvsNth">&nbsp;</label>
+                <textarea id="msgStc" name="msgStc" cols="120" rows="5" readOnly>클릭 한번으로 필요한 정보를 받아가세요</textarea>
+            </div>
+        </fieldset>
+    </section>
+
+    <!-- 버튼 영역 -->
+    <section class="center">
+        <input type="button" value="저장" class="width060" onClick="openCmpTmpDtl('');">
+        <input type="button" value="초기화" class="width080" onClick="toDo();">
+        <input type="button" value="삭제" class="width060" onClick="toDo();">
+        <input type="button" value="목록" class="width060" onClick="historyBack();">
+    </section>
+
+</body>
+
+<script src="/js/bhvStd.js"></script>
+<script>
+/**
+ * 목록 화면으로 이동
+ */
+function historyBack()
+{
+    // 메뉴 제목
+    window.parent.document.getElementById("MNU_TTL").innerHTML = "템플릿 목록";
+
+    history.back();
+}
+</script>
+
+</html>
+        

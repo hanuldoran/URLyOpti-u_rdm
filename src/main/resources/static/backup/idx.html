@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta property="og:title" content="URLyOpti">
+    <meta property="og:image" content="/images/urlyopti.jpg">
+    <meta property="og:description" content="URLyOpti-색인">
+    <meta name="og:image" property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:title" content="URLyOpti">
+    <meta name="twitter:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:description" content="URLyOpti-색인">
+
+    <title>URLyOpti</title>
+
+    <link href="/images/urlyopti.ico" rel="shortcut icon">
+    <link rel="stylesheet" type="text/css" href="/css/default.css">
+    <link rel="stylesheet" type="text/css" href="/css/lattice.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+
+<body onLoad="loadHtml();">
+    <header id="HEADER">
+        <div class="float3l">
+            <img src="/images/urlyopti_name.jpg" title="URLyOpti로고">
+        </div>
+        <div class="float3l center">
+            얼리옵티
+        </div>
+        <nav>
+        </nav>
+    </header>
+    <aside>
+        <div>
+            <ul>
+                <li>
+                    캠페인
+                    <ul>
+                        <li onClick="clickNavigation('캠페인 &gt; 목록',        '/cmp/cmpLst',    'SECTION_TITLE', 'SECTION_ARTICLE');">캠페인 목록</li>
+                        <li onClick="clickNavigation('캠페인 &gt; 템플릿 목록', '/cmp/cmpTmpLst', 'SECTION_TITLE', 'SECTION_ARTICLE');">캠페인 템플릿 목록</li>
+                    </ul>
+                </li>
+                <li>
+                    기준정보
+                    <ul>
+                        <li onClick="clickNavigation('기준정보 &gt; URL목록',     '/stdIfm/urlLst',    'SECTION_TITLE', 'SECTION_ARTICLE');">URL 목록</li>
+                        <li onClick="clickNavigation('기준정보 &gt; URL-SET목록', '/stdIfm/urlSetLst', 'SECTION_TITLE', 'SECTION_ARTICLE');">URL-SET 목록</li>
+                        <li onClick="clickNavigation('기준정보 &gt; 메시지목록',  '/stdIfm/msgLst',    'SECTION_TITLE', 'SECTION_ARTICLE');">메시지 목록</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <main>
+        <section>
+            <div id="SECTION_TITLE" class="sectionTitle">Dashboard</div>
+            <article id="SECTION_ARTICLE">
+            </article>
+        </section>
+    </main>
+    <!--
+    <article>
+        <section>
+            <div>main</div>
+        </section>
+    </article>
+    -->
+    <footer>
+        <div>
+            <div>footer</div>
+        </div>
+    </footer>
+</body>
+
+<script src="/js/default.js"></script>
+<script src="/js/detailRecord.js"></script>
+<script>
+    /**
+     * html 문서의 로딩 완료 후 초기화
+     */
+    function loadHtml()
+    {
+    }
+
+    /**
+     * cmpTmpLst UI에서 [추가] 버튼 클릭 또는 조회결과 테이블에서 행 더블클릭 시 캠페인템플릿상세 UI 호출
+     * param cmpTmpId - 캠페인템플릿아이디
+     */
+    function openCmpTmpDtl(cmpTmpId)
+    {
+        if( clickNavigation('캠페인 &gt; 템플릿 상세', '/cmp/cmpTmpDtl', 'SECTION_TITLE', 'SECTION_ARTICLE') )
+        {
+            // [cmpTmpId]가 있으면 상세조회
+            if( '' != cmpTmpId)
+            {
+                alert('상세조회를 구현하세요.');
+            }
+        }
+    }
+
+    /**
+     * 테이블 목록에서 행에 마우스가 올라갔을 때의 이벤트
+     * param obj - 마우스가 올라간 행객체
+     */
+    function mouseOverSchRstRow(obj)
+    {
+        obj.style.backgroundColor = "#e7f9ff";
+    }
+
+    /**
+     * 테이블 목록에서 행에서 마우스가 벗어났을 때의 이벤트
+     * param obj - 마우스가 벗어난 행객체
+     * param oddEvn - 홀수행인지 짝수행인지의 구분자(색은 css 파일에 정의된 것과 일치)
+     */
+    function mouseOutSchRstRow(obj, oddEvn)
+    {
+        if( oddEvn == "odd" )
+        {
+            obj.style.backgroundColor = "#ffffff";
+        }
+        else
+        {
+            obj.style.backgroundColor = "#e7e7e7";
+        }
+    }
+
+    /**
+     * 테이블의 행을 클릭했을 때 상세 설명 행을 조회하여 보이기 / 감추기
+     * param searchId - 검색한 업무의 아이디
+     * param tableId - 검색 결과를 표시하는 테이블의 아이디
+     * param clickRowNum - 선택한 행의 번호, 제목행을 제외하므로 1부터 시작
+     * param spanCount - 합칠 행의 개수(한 행에 존재하는 셀의 개수)
+     * param recordId - 선택한 행의 아이디
+     */
+    function clickSchRstRow(searchId, tableId, clickRowNum, spanCount, recordId)
+    {
+        let applyClassName = "DTL_EXP_ROW";
+        let objTable = document.getElementById(tableId);
+
+        // 1. 행제거 공통 함수 호출
+        let breakYn = removeRecordInTable( objTable, recordId, applyClassName);
+        if( "break" == breakYn )
+        {
+            return
+        }	
+
+        // 2. TO-DO recordId를 이용하여 상세정보를 조회
+        let txtHTML = "";
+        
+        switch(searchId)
+        {
+        case 'CMP_SCH_RST_LST':
+            txtHTML = getDetailAboutCampaign(recordId);
+            break;
+        case 'URL_SCH_RST_LST':
+            txtHTML = getDetailAboutUrl(recordId);
+            break;
+        case 'URL_SET_SCH_RST_LST':
+            txtHTML = getDetailAboutUrlSet(recordId);
+            break;
+        case 'MSG_SCH_RST_LST':
+            txtHTML = getDetailAboutMsg(recordId);
+            break;
+        default:
+            alert("no " + searchId + ", 이벤트를 새로 정의해 주세요.");
+            txtHTML = "";
+            break;
+        }
+
+        // 3. 행추가 공통 함수 호출
+        if( txtHTML != "" )
+        {
+            addRecordInTable( objTable, clickRowNum, recordId, applyClassName, spanCount, txtHTML);
+        }
+    }
+</script>
+</html>

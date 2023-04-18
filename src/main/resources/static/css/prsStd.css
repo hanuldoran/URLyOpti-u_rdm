@@ -1,0 +1,323 @@
+@charset "UTF-8";
+*
+{
+    box-sizing: border-box; 
+}
+
+body, .normal
+{
+    margin: 0px;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+section
+{
+    margin: 10px;
+/*    border: 1px solid #ff0000;*/
+}
+
+span
+{
+    display:inline-block; 
+    vertical-align: middle;
+}
+
+fieldset
+{
+    padding: 10px 10px 10px 10px; /* 상 우 하 좌 */
+    margin-bottom: 20px;
+    border: 1px dotted #595959;
+    border-radius: 10px;
+}
+
+legend
+{
+    padding: 10px;
+}
+
+label
+{
+    margin: 0px;
+    padding: 0px;
+
+    display:inline-block; 
+    width: 120px;
+    height: 32px;
+}
+
+input[type=text], input[type=date], input[type=button], select
+{
+    margin: 0px;
+    padding: 0px;
+
+    height: 32px;
+    font-size: 16px;
+    border: 1px solid #d9d9d9;
+}
+
+/* input type="text" 중 readOnly */
+input[type=text]:read-only, textarea:read-only, select:disabled
+{
+    background-color: #e7e7e7;
+}
+
+input[type=radio]
+{
+    vertical-align: middle;
+
+    /* default style 제거 */
+    appearance: none;
+    
+    /* 새로운 style 정의 */
+    border: max(2px, 0.1em) solid #d9d9d9;
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
+}
+input[type=radio]:checked, input[type=checkbox]:checked
+{
+    border: 0.4em solid #595959;
+}
+input[type=radio]:focus-visible, input[type=checkbox]:focus-visible
+{
+    outline-offset: max(2px, 0.1em);
+    outline: max(2px, 0.1em) dotted #000000;
+}
+input[type=radio]:hover, input[type=checkbox]:hover
+{
+    box-shadow: 0 0 0 max(4px, 0.2em) #d9d9d9;
+    cursor: pointer;
+}
+input[type=radio]:disabled, input[type=checkbox]:disabled
+{
+    background-color: #d9d9d9;
+    box-shadow: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+input[type=radio]:disabled + span, input[type=checkbox]:disabled + span
+{
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+textarea
+{
+    margin: 0px;
+    padding: 0px;
+
+    font-size: 16px;
+    border: 1px solid #d9d9d9;
+}
+
+.left{ text-align: left; }
+.center{ text-align: center; }
+.right{ text-align: right; }
+
+.border{ border: 1px solid #d9d9d9; }
+.noBorder{ border-width: 0px; }
+
+.width010{ width:  10px; }
+.width020{ width:  20px; }
+.width030{ width:  30px; }
+.width040{ width:  40px; }
+.width050{ width:  50px; }
+.width060{ width:  60px; }
+.width070{ width:  70px; }
+.width080{ width:  80px; }
+.width090{ width:  90px; }
+.width100{ width: 100px; }
+.width120{ width: 120px; }
+.width160{ width: 150px; }
+.width170{ width: 170px; }
+.width180{ width: 180px; }
+.width200{ width: 200px; }
+.width250{ width: 250px; }
+.width300{ width: 300px; }
+.width350{ width: 350px; }
+.width400{ width: 400px; }
+.width450{ width: 450px; }
+.width500{ width: 500px; }
+.width600{ width: 600px; }
+.width700{ width: 600px; }
+.width800{ width: 800px; }
+.width1000{ width: 1000px; }
+.width1200{ width: 1200px; }
+.widthP100{ width: 100%; }
+.widthP090{ width: 90%; }
+
+.height020{ height:  20px; }
+.height025{ height:  25px; }
+.height030{ height:  30px; }
+.height035{ height:  35px; }
+.height040{ height:  40px; }
+.height050{ height:  50px; }
+.height060{ height:  60px; }
+.height070{ height:  70px; }
+.height080{ height: 080px; }
+.height090{ height: 090px; }
+.height100{ height: 100px; }
+
+.margin004{ margin: 4px; }
+.tmargin004{ margin-top: 4px; }
+.lmargin004{ margin-left: 4px; }
+
+.tpadding004{ padding-top: 4px; }
+.tpadding006{ padding-top: 6px; }
+.lpadding004{ padding-left: 4px; }
+.lpadding006{ padding-left: 6px; }
+.lpadding008{ padding-left: 8px; }
+.rpadding004{ padding-right: 4px; }
+.rpadding006{ padding-right: 6px; }
+.rpadding008{ padding-right: 8px; }
+
+.pointer { cursor: pointer; }
+.wrap
+{
+    width: 100%;
+}
+    .wrap > .dvsNth
+    {
+        float: left;
+    }
+    .wrap > .dvs2_50p
+    {
+        float: left;
+        width: 50%;
+    }
+    .wrap > .dvs2l_90p
+    {
+        float: left;
+        width: 90%;
+    }
+    .wrap > .dvs2r_10p
+    {
+        float: right;
+        width: 10%;
+    }
+
+    .wrap > .dvs2l_70p
+    {
+        float: left;
+        width: 70%;
+    }
+    .wrap > .dvs2r_30p
+    {
+        float: right;
+        width: 30%;
+    }
+.wrap::after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+table.schRstLst
+{
+    width: 100%;
+    border: 1px solid #595959;
+    border-spacing: 0px;
+}
+
+table.schRstLst > thead > tr > th
+{
+    color: #ffffff;
+    background-color: #595959;
+    border-right: 1px solid #ffffff;
+}
+
+table.schRstLst > thead > tr > th:last-child
+{
+    border-right: 0px solid #ffffff;
+}
+
+/* 아래 클래스로 대체
+table.schRstLst > tbody > tr:nth-child(2n) 
+{
+    background-color: #e7e7e7;
+}
+
+table.schRstLst > tbody > tr:nth-child(2n+1) 
+{
+    background-color: #ffffff;
+}
+*/
+
+table.schRstLst > tbody > tr.evn
+{
+    background-color: #e7e7e7;
+}
+
+table.schRstLst > tbody > tr.odd 
+{
+    background-color: #ffffff;
+}
+
+table.schRstLst > tbody > tr > td
+{
+    color: #595959;
+    border-right: 1px solid #595959;
+    border-top: 1px solid #595959;
+}
+
+table.schRstLst > tbody > tr > td:last-child
+{
+    color: #595959;
+    border-right: 0px solid #595959;
+}
+
+#POPUP_WRAP
+{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+    display:inline-block;
+    background:rgba(0,0,0,.5);
+    font-size:0;
+    text-align:center;
+    vertical-align:middle;
+}
+#POPUP_WRAP:after
+{
+    display:inline-block;
+    height:100%;
+    vertical-align:middle;
+    content:'';
+}
+#POPUP_INNER
+{
+    display:inline-block;
+    border : 1px solid #e7e7e7;
+
+    background:#fff;
+    font-size:16px;
+    text-align:center;
+    vertical-align:middle;
+}
+    #POPUP_HEADER
+    {
+        border-bottom : 1px solid #e7e7e7;
+    }
+    .popup_title
+    {
+        
+        padding: 10px 10px 10px 10px; /* 상 우 하 좌 */
+        font-size: 1.5em;
+        font-weight: bolder;
+        text-align: left;
+    }
+    #POPUP_BODY
+    {
+        padding: 10px 20px 10px 20px; /* 상 우 하 좌 */
+        text-align: left;
+    }
+    #POPUP_FOOTER
+    {
+        border-top : 1px solid #e7e7e7;
+        padding: 8px;
+    }

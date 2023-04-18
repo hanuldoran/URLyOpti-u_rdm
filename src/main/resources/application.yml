@@ -1,6 +1,22 @@
+server:
+  port: 2024
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mysql://192.168.56.55:3306/urlyopti
+    url: jdbc:mysql://192.168.56.54:3306/urlyopti
+    #url: jdbc:mysql://192.168.56.54:3306/urlyopti?characterEncoding=UTF-8&serverTimezone=UTC
     username: urlyopti
     password: dev001
+
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org.hibernate:
+      type.descriptor.sql: trace #show parameter binding
+      SQL: DEBUG

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta property="og:title" content="URLyOpti">
+    <meta property="og:image" content="/images/urlyopti.jpg">
+    <meta property="og:description" content="URLyOpti-레이아웃">
+    <meta name="og:image" property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:title" content="URLyOpti">
+    <meta name="twitter:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:description" content="URLyOpti-레이아웃">
+
+    <title>URLyOpti</title>
+
+    <link href="/images/urlyopti.ico" rel="shortcut icon">
+
+    <style>
+        /* 길이 계산을 편하게 하기위함. box-sizing에 관한 설명은 아래 링크를 참고해주세요 */
+        *
+        {
+            box-sizing: border-box; 
+        }
+
+        body
+        {
+            margin: 0px;
+            font-family: sans-serif;
+        }
+
+        header
+        {
+            height: 45px;
+            padding: 10px;
+            border-bottom: 1px solid #a3a3a3;
+        }
+        
+        aside
+        {
+            float: left;
+            width: 200px;
+            /* border: 1px solid #00ff00; */
+        }
+        
+        main
+        {
+            min-height: 650px;
+            margin-left: 200px;
+            border-left: 1px solid #a3a3a3;
+            padding: 10px;
+        }
+        
+        footer
+        {
+            border-top: 1px solid #a3a3a3;
+            padding: 10px;
+        }
+
+        .float3l
+        {
+            float: left;
+            width: 33%;
+        }
+        .float3r
+        {
+            float: right;
+            width: 34%;
+        }
+        .center
+        {
+            text-align: center;
+        }
+        .sectionTitle
+        {
+            font-size: 25px;
+            font-weight: bolder;
+        }
+    </style>
+    <!--
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/global.css">
+    -->
+</head>
+
+<body>
+    <header>
+        <div class="float3l">
+            <img src="/images/urlyopti_name.jpg" title="URLyOpti로고">
+        </div>
+        <div class="float3l center">
+            얼리옵티
+        </div>
+        <nav>
+        </nav>
+    </header>
+    <aside>
+        <div>
+            <ul>
+                <li>
+                    캠페인
+                    <ul>
+                        <li onClick="clickCmpLst();">캠페인목록</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <main>
+        <section>
+            <div id="SECTION_TITLE" class="sectionTitle">main.section.div</div>
+            <article id="SECTION_ARTICLE">
+            </article>
+        </section>
+    </main>
+    <!--
+    <article>
+        <section>
+            <div>main</div>
+        </section>
+    </article>
+    -->
+    <footer>
+        <div>
+            <div>footer</div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    async function fetchHtmlAsText(url)
+    {
+        return await (await fetch(url)).text();
+    }
+
+    async function importPage(target, source)
+    {
+        document.querySelector('#' + target).innerHTML = await fetchHtmlAsText(source + '.html');
+    }
+    
+    function clickCmpLst()
+    {
+        document.getElementById("SECTION_TITLE").innerHTML = "캠페인 &gt; 목록";
+        importPage("SECTION_ARTICLE", "./indexSub");
+    }
+</script>
+</html>

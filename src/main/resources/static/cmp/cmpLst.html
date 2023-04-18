@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta property="og:title" content="URLyOpti">
+    <meta property="og:image" content="/images/urlyopti.jpg">
+    <meta property="og:description" content="URLyOpti(캠페인목록)">
+    <meta name="og:image" property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:title" content="URLyOpti">
+    <meta name="twitter:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:description" content="URLyOpti-(캠페인목록)">
+
+    <title>URLyOpti</title>
+
+    <link href="/images/urlyopti.ico" rel="shortcut icon">
+
+    <link rel="stylesheet" type="text/css" href="/css/prsStd.css">
+</head>
+
+<body>
+
+    <!-- 조회 조건 영역 -->
+    <section>
+        <fieldset>
+            <div class="wrap">
+                <div class="dvs2l_90p">
+                    <label for="schCmpNm" class="width080">캠페인명</label>
+                    <input type="text" id="schCmpNm" name="schCmpNm" class="width200">
+
+                    <span class="width040">&nbsp;</span>
+
+                    <label for="schLstChgDat" class="width100">최종변경일</label>
+                    <input type="date" id="schLstChgDat" name="schLstChgDat">
+
+                    <span class="width040">&nbsp;</span>
+
+                    <label for="schCmpStt" class="width100">캠페인상태</label>
+                    <select size="1" id="schCmpStt" id="schCmpStt">
+                        <option value="ALL" selected>전체</option>
+                        <option value="T">가등록</option>
+                        <option value="B">시작전</option>
+                        <option value="O">진행중</option>
+                        <option value="F">종료</option>
+                    </select>
+                </div>
+
+                <div class="dvs2r_10p right">
+                    <input type="button" value="조회" class="width060" onClick="toDo();">
+                </div>
+            </div>
+        </fieldset>
+    </section>
+
+    <!-- 버튼 영역 -->
+    <section>
+        <div class="wrap">
+            <div class="dvs2_50p">
+                <input type="button" value="추가" class="width060" onClick="toDo();">
+                <input type="button" value="수정" class="width060" onClick="toDo();">
+                <input type="button" value="삭제" class="width060" onClick="toDo();">
+                <input type="button" value="엑셀다운로드" class="width120" onClick="toDo();">
+            </div>
+
+            <div class="dvs2_50p right">
+                <label class="right">전체 ${count}를</label>
+                <select size="1" id="schPagPerNmb" name="schPagPerNmb" onChange="toDo();">
+                    <option value="10">10개씩 보기</option>
+                    <option value="20" selected>20개씩 보기</option>
+                    <option value="30">30개씩 보기</option>
+                    <option value="50">50개씩 보기</option>
+                    <option value="100">100개씩 보기</option>
+                </select>
+                <input type="button" value="〈" class="width030"  onClick="toDo()">
+                <input type="text" id="CRT_PAG" name="crtPag" class="width030 center" value="1">
+                <label class="width080 center">of ${total}</label>
+                <input type="button" value="〉" class="width030" onClick="toDo()">
+            </div>
+        </div>
+    </section>
+
+    <!-- 조회결과 리스트 영역 -->
+    <section>
+        <table id="SCH_RST_LST" class="schRstLst">
+            <colgroup>
+                <col width="30"><!-- 체크박스 -->
+                <col width="100"><!-- 캠페인ID -->
+                <col width="200"><!-- 캠페인명 -->
+                <col width="60"><!-- 상태 -->
+                <col width="80"><!-- 최종변경자 -->
+                <col width="140"><!-- 최종변경일 -->
+                <col width="40"><!-- 대상수 -->
+            </colgroup>
+            <thead>
+                <tr class="height035">
+                    <th onClick="checkAllOrNothing();">√</th>
+                    <th>캠페인ID</th>
+                    <th>캠페인명</th>
+                    <th>상태</th>
+                    <th>최종변경자</th>
+                    <th>최종변경일</th>
+                    <th>대상수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- tr class="height030">
+                    <td colspan="7">검색 조건을 입력 후 조회 버튼을 선택하세요.</td>
+                </tr -->
+                <tr class="height030 odd"
+                    onClick="clickSchRstRow('SCH_RST_LST', 1, 7, 'KKO20230001');"
+                    onDblClick="openCmpDtl('KKO20230001');"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="KKO20230001"></td>
+                    <td class="center">KKO20230001</td>
+                    <td class="left">홈피 새단장 알림</td>
+                    <td class="center">가등록</td>
+                    <td class="center">Batch</td>
+                    <td class="center">2022-07-03 03:00:00</td>
+                    <td class="right">200,000</td>
+                </tr>
+                <tr class="height030 evn"
+                    onClick="clickSchRstRow('SCH_RST_LST', 2, 7, 'CMP20230001');"
+                    onDblClick="openCmpDtl('CMP20230001');"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'evn');">
+                    <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="CMP20230001"></td>
+                    <td class="center">CMP20230001</td>
+                    <td class="left">정보 수정 이벤트</td>
+                    <td class="center">진행중</td>
+                    <td class="center">P275423</td>
+                    <td class="center">2022-06-27 13:23:52</td>
+                    <td class="right">172,365</td>
+                </tr>
+                <tr class="height030 odd"
+                    onClick="clickSchRstRow('SCH_RST_LST', 3, 7, 'CMP202300002');"
+                    onDblClick="openCmpDtl('CMP202300002');"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="CMP202300002"></td>
+                    <td class="center">CMP202300002</td>
+                    <td class="left">신규 가입 이벤트</td>
+                    <td class="center">진행중</td>
+                    <td class="center">P342516</td>
+                    <td class="center">2022-06-15 15:00:00</td>
+                    <td class="right">0</td>
+                </tr>
+                <tr class="height030 evn"
+                    onDblClick="openCmpDtl('CMP202300003');"
+                    onClick="clickSchRstRow('SCH_RST_LST', 4, 7, 'CMP202300003');"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'evn');">
+                    <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="CMP202300003"></td>
+                    <td class="center">CMP202300003</td>
+                    <td class="left">동의 추가 이벤트</td>
+                    <td class="center">종료</td>
+                    <td class="center">P323564</td>
+                    <td class="center">2022-06-17 10:21:32</td>
+                    <td class="right">88,243</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+
+<script src="/js/bhvStd.js"></script>
+<script>
+/**
+ * RecordID에 대한 상세정보를 조회
+ * @param recordId - 선택한 행의 아이디
+ * @return String - 상세정보를 표시하기 위한 html 코드
+ */
+function getRecordDetail(recordId)
+{
+    let txtHTML = '';
+    txtHTML += '<div style="background-color: #e7f9ff; padding: 10px;">';
+    txtHTML += '<table style="width: 100%; border-width: 0px;">';
+    txtHTML +=   '<tr style="border-width: 0px;">';
+    txtHTML +=     '<td style="width: 80px; border-width: 0px; background-color: #e7f9ff;">기간</td>';
+    txtHTML +=     '<td style="border-width: 0px; background-color: #e7f9ff;">2022-07-01 12시 ~ 2022-07-14 12시</td>';
+    txtHTML +=   '</tr>';
+    txtHTML +=   '<tr style="border-width: 0px;">';
+    txtHTML +=     '<td style="width: 80px; border-width: 0px; background-color: #e7f9ff;">상세설명</td>';
+    txtHTML +=     '<td style="border-width: 0px; background-color: #e7f9ff;">90일이상 홈페이지에 접속하지 않은 고객 중에서 패스워드 변경 기간이 만료되어 가는 고객들을 대상으로, 홈페이지 접속에 접속하여 마케팅 관련 고객 동의를 획득할 수 있도록 유도한다.</td>';
+    txtHTML +=   '</tr>';
+    txtHTML += '';
+    txtHTML += '</table>';
+    txtHTML += '</div>';
+
+    return txtHTML;
+}
+
+/**
+ * cmpTmpLst UI에서 [추가] 버튼 클릭 또는 조회결과 테이블에서 행 더블클릭 시 캠페인템플릿상세 UI 호출
+ * @param cmpTmpId - 캠페인템플릿아이디
+ */
+function openCmpDtl(cmpId)
+{
+    // 메뉴 제목
+    let ttl = "캠페인 상세";
+
+    // 메뉴 경로
+    let pth = window.parent.document.getElementById("MNU_PTH").innerHTML;
+
+    // 메뉴 URL
+    let url = "./cmpDtl.html";
+
+    // 화면 이동 함수 호출
+    window.parent.openContents(ttl, pth, cmpId, url);
+}
+</script>
+
+</html>

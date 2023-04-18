@@ -1,0 +1,102 @@
+<fieldset id="SCH_CDT_ARE">
+    <div class="float2l_90">
+        <label for="schCmpNm">캠페인명</label>
+        <input type="text" id="schCmpNm" name="schCmpNm" size="60">
+
+        <label for="schUrl" class="margin_l_50">URL</label>
+        <input type="text" id="schUrl" name="schUrl" size="60">
+    </div>
+    <div class="float2r_10 right">
+        <input type="button" value="조회" onClick="noAction();">
+    </div>
+</fieldset>
+
+<fieldset id="CUD_BTN_ARE">
+    <div class="float2l_60">
+        <input type="button" value="추가" onClick="openCmpTmpDtl('');">
+        <input type="button" value="삭제" onClick="noAction();">
+        <input type="button" value="엑셀다운로드" onClick="noAction();">
+    </div>
+    <div class="float2r_40 right">
+        <label for="schPagPerNmb">페이지당개수</label>
+        <select size="1" id="schPagPerNmb" name="schPagPerNmb">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+</fieldset>
+
+<table id="SCH_RST_LST">
+    <colgroup>
+        <col width="30"><!-- 체크박스 -->
+        <col width="100"><!-- 캠페인명 -->
+        <col width="260"><!-- 상세설명 -->
+        <col width="40"><!-- Step수 -->
+        <col width="280"><!-- Step1 URL -->
+    </colgroup>
+    <thead>
+        <tr>
+            <th onClick="checkAllOrNothing();">√</th>
+            <th>캠페인명</th>
+            <th>상세설명</th>
+            <th>Step수</th>
+            <th>Step1 URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- tr>
+            <td colspan="5">검색 조건을 입력 후 조회 버튼을 선택하세요.</td>
+        </tr -->
+        <tr onClick="openCmpTmpDtl('KKO20230001');"
+            onMouseOver="mouseOverSchRstRow(this);"
+            onMouseOut="mouseOutSchRstRow(this, 'odd');">
+            <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="KKO20230001"></td>
+            <td class="left">홈피 새단장 알림</td>
+            <td class="left">홈페이지 리뉴얼 홍보</td>
+            <td class="center">5</td>
+            <td class="left">https://user.domain.com/campaign/view/step1.html</td>
+        </tr>
+        <tr onClick="openCmpTmpDtl('CMP20230001');"
+            onMouseOver="mouseOverSchRstRow(this);"
+            onMouseOut="mouseOutSchRstRow(this, 'evn');">
+            <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="CMP20230001"></td>
+            <td class="left">정보 수정 이벤트</td>
+            <td class="left">캠페인 시작일자가 도래한 상태</td>
+            <td class="center">7</td>
+            <td class="left">https://user.domain.com/campaign/infomation/step1.html</td>
+        </tr>
+        <tr onClick="openCmpTmpDtl('CMP202300002');"
+            onMouseOver="mouseOverSchRstRow(this);"
+            onMouseOut="mouseOutSchRstRow(this, 'odd');">
+            <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="CMP202300002"></td>
+            <td class="left">신규 가입 이벤트</td>
+            <td class="left">캠페인을 위한 모든 정보를 입력한 상태</td>
+            <td class="center">8</td>
+            <td class="left">https://user.domain.com/campaign/new/step1.html</td>
+        </tr>
+        <tr onClick="openCmpTmpDtl('CMP202300003');"
+            onMouseOver="mouseOverSchRstRow(this);"
+            onMouseOut="mouseOutSchRstRow(this, 'evn');">
+            <td class="center"><input type="checkbox" name="lstChk" id="lstChk" value="CMP202300003"></td>
+            <td class="left">동의 추가 이벤트</td>
+            <td class="left">캠페인 종료일자가 초과한 상태</td>
+            <td class="center">4</td>
+            <td class="left">https://user.domain.com/campaign/aggreement/step1.html</td>
+        </tr>
+    </tbody>
+</table>
+
+<fieldset id="SCH_PAG_ARE">
+    <div class="float3l_25">
+        &nbsp;
+    </div>
+    <div class="float3l_50 center">
+        &lt;&lt; &lt; 1 2 3 4 5 6 7 8 9 10 &gt; &gt;&gt;
+    </div>
+    <div class="float3r_25 right">
+        조회 결과 : 4 건
+    </div>
+</fieldset>

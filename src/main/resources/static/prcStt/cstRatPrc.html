@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta property="og:title" content="URLyOpti">
+    <meta property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:description" content="URLyOpti-(고객반응현황)">
+    <meta name="og:image" property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:title" content="URLyOpti">
+    <meta name="twitter:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:description" content="URLyOpti-(고객반응현황)">
+
+    <title>URLyOpti</title>
+
+    <link href="/images/urlyopti.ico" rel="shortcut icon">
+
+    <link rel="stylesheet" type="text/css" href="/css/prsStd.css">
+</head>
+
+<body>
+
+    <!-- 조회 조건 영역 -->
+    <section>
+        <fieldset>
+            <div class="wrap">
+                <div class="dvs2l_90p">
+                    <label for="schCmpNm" class="width100">캠페인명</label>
+                    <input type="text" id="schCmpNm" name="schCmpNm" class="width200">
+
+                    <span class="width040">&nbsp;</span>
+
+                    <label for="schCmpId" class="width080">캠페인ID</label>
+                    <input type="text" id="schCmpId" name="schCmpId" class="width200">
+                </div>
+
+                <div class="dvs2r_10p right">
+                    <input type="button" value="조회" class="width060" onClick="toDo();">
+                </div>
+            </div>
+        </fieldset>
+    </section>
+
+    <!-- 조회결과 리스트 영역 -->
+    <section>
+        <table id="SCH_RST_LST" class="schRstLst">
+            <colgroup>
+                <col width="60"><!-- RDM -->
+                <col width="140"><!-- 주제 -->
+                <col width="100"><!-- Step1 -->
+                <col width="100"><!-- Step2 -->
+                <col width="100"><!-- Step3 -->
+                <col width="100"><!-- Step4 -->
+                <col width="100"><!-- Step5 -->
+            </colgroup>
+            <thead>
+                <tr class="height035">
+                    <th colspan="2">&nbsp;</th>
+                    <th>Step1</th>
+                    <th>Step2</th>
+                    <th>Step3</th>
+                    <th>Step4</th>
+                    <th>Step5</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="height030 odd"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td colspan="2" class="left lpadding006">진입수</td>
+                    <td class="right rpadding006">906 건</td>
+                    <td class="right rpadding006">808 건</td>
+                    <td class="right rpadding006">203 건</td>
+                    <td class="right rpadding006">72 건</td>
+                    <td class="right rpadding006">8 건</td>
+                </tr>
+                <tr class="height030 odd""
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td colspan="2" class="left lpadding006">대상 대비 비율</td>
+                    <td class="right rpadding006">7.30 %</td>
+                    <td class="right rpadding006">6.50 %</td>
+                    <td class="right rpadding006">1.63 %</td>
+                    <td class="right rpadding006">0.58 %</td>
+                    <td class="right rpadding006">0.06 %</td>
+                </tr>
+                <tr class="height030 odd""
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td colspan="2" class="left lpadding006">Step1 대비 비율</td>
+                    <td class="right rpadding006">100 %</td>
+                    <td class="right rpadding006">89.18 %</td>
+                    <td class="right rpadding006">22.41 %</td>
+                    <td class="right rpadding006">7.95 %</td>
+                    <td class="right rpadding006">0.88 %</td>
+                </tr>
+
+                <tr class="height030 evn"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'evn');">
+                    <td rowspan="2" class="center">RDM<br>1</td>
+                    <td class="left lpadding006">진입수</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">53 건</td>
+                    <td class="right rpadding006">21 건</td>
+                    <td class="right rpadding006">2 건</td>
+                </tr>
+                <tr class="height030 evn"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'evn');">
+                    <td class="left lpadding006">캠페인 대비 비율</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">26.11 %</td>
+                    <td class="right rpadding006">19.17 %</td>
+                    <td class="right rpadding006">25.00 %</td>
+                </tr>
+
+                <tr class="height030 odd"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td rowspan="2" class="center">RDM<br>2</td>
+                    <td class="left lpadding006">진입수</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">7 건</td>
+                    <td class="right rpadding006">1 건</td>
+                </tr>
+                <tr class="height030 odd"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'odd');">
+                    <td class="left lpadding006">캠페인 대비 비율</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">9.72 %</td>
+                    <td class="right rpadding006">12.50 %</td>
+                </tr>
+
+                <tr class="height030 evn"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'evn');">
+                    <td rowspan="2" class="center">RDM<br>계</td>
+                    <td class="left lpadding006">진입수</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">53 건</td>
+                    <td class="right rpadding006">28 건</td>
+                    <td class="right rpadding006">3 건</td>
+                </tr>
+                <tr class="height030 evn"
+                    onMouseOver="mouseOverSchRstRow(this);"
+                    onMouseOut="mouseOutSchRstRow(this, 'evn');">
+                    <td class="left lpadding006">캠페인 대비 비율</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">&nbsp;</td>
+                    <td class="right rpadding006">26.11 %</td>
+                    <td class="right rpadding006">38.89 %</td>
+                    <td class="right rpadding006">37.50 %</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+
+<script src="/js/bhvStd.js"></script>
+<script>
+/**
+ * RecordID에 대한 상세정보를 조회
+ * @param recordId - 선택한 행의 아이디
+ * @return String - 상세정보를 표시하기 위한 html 코드
+ */
+function getRecordDetail(recordId)
+{
+    let txtHTML = '';
+    txtHTML += '<div style="background-color: #e7f9ff; padding: 10px;">';
+    txtHTML += '<table style="width: 100%; border-width: 0px;">';
+    txtHTML +=   '<tr style="border-width: 0px;">';
+    txtHTML +=     '<td style="width: 80px; border-width: 0px; background-color: #e7f9ff;">기간</td>';
+    txtHTML +=     '<td style="border-width: 0px; background-color: #e7f9ff;">2022-07-01 12시 ~ 2022-07-14 12시</td>';
+    txtHTML +=   '</tr>';
+    txtHTML +=   '<tr style="border-width: 0px;">';
+    txtHTML +=     '<td style="width: 80px; border-width: 0px; background-color: #e7f9ff;">상세설명</td>';
+    txtHTML +=     '<td style="border-width: 0px; background-color: #e7f9ff;">90일이상 홈페이지에 접속하지 않은 고객 중에서 패스워드 변경 기간이 만료되어 가는 고객들을 대상으로, 홈페이지 접속에 접속하여 마케팅 관련 고객 동의를 획득할 수 있도록 유도한다.</td>';
+    txtHTML +=   '</tr>';
+    txtHTML += '';
+    txtHTML += '</table>';
+    txtHTML += '</div>';
+
+    return txtHTML;
+}
+
+/**
+ * cmpTmpLst UI에서 [추가] 버튼 클릭 또는 조회결과 테이블에서 행 더블클릭 시 캠페인템플릿상세 UI 호출
+ * @param cmpTmpId - 캠페인템플릿아이디
+ */
+function openCmpDtl(cmpId)
+{
+    // 메뉴 제목
+    let ttl = "캠페인 상세";
+
+    // 메뉴 경로
+    let pth = window.parent.document.getElementById("MNU_PTH").innerHTML;
+
+    // 메뉴 URL
+    let url = "./cmpDtl.html";
+
+    // 화면 이동 함수 호출
+    window.parent.openContents(ttl, pth, cmpId, url);
+}
+</script>
+
+</html>

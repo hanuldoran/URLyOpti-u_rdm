@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta property="og:title" content="URLyOpti">
+    <meta property="og:image" content="/images/urlyopti.jpg">
+    <meta property="og:description" content="URLyOpti(URL목록)">
+    <meta name="og:image" property="og:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:title" content="URLyOpti">
+    <meta name="twitter:image" content="/images/urlyopti.jpg">
+    <meta name="twitter:description" content="URLyOpti-(URL목록)">
+
+    <title>URLyOpti</title>
+
+    <link href="/images/urlyopti.ico" rel="shortcut icon">
+
+    <style type="text/css">
+        *
+        {
+            box-sizing: border-box; 
+        }
+
+        body
+        {
+            margin: 0px;
+            font-size: 2em;
+            font-family: sans-serif;
+        }
+
+        fieldset
+        {
+            padding: 50px;
+            border: 1px dotted #595959;
+            border-radius: 20px;
+        }
+        
+        label
+        {
+            display:inline-block;
+            width: 100%;
+            text-align: left;
+
+            font-size: 2em;
+            font-family: sans-serif;
+        }
+        
+        input[type=text], input[type=password]
+        {
+            display:inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: left;
+
+            font-size: 2em;
+            font-family: sans-serif;
+        }
+
+        input[type=button]
+        {
+            display:inline-block;
+            width: 100%;
+            text-align: center;
+
+            font-size: 2em;
+            font-family: sans-serif;
+        }
+        
+        .container 
+        {
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+
+            display:inline-block;
+            /* background:rgba(0,0,0,.5); */
+            font-size:0;
+            text-align:center;
+            vertical-align:middle;
+        }
+        .container:after
+        {
+            display:inline-block;
+            height:100%;
+            vertical-align:middle;
+            content:'';
+        }
+
+        .child 
+        {
+            display:inline-block;
+
+            background:#fff;
+            font-size:16px;
+            text-align:center;
+            vertical-align:middle;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 로그인 영역 -->
+<div class="container">
+    <div class="child">
+        <fieldset>
+            <div>
+                <label for="usrId">아이디</label>
+            </div>
+            <div>
+                <input type="text" id="usrId" name="usrId" class="width120" value="admin" autocomplete="off">
+            </div>
+            <div>
+                <label for="usrPw">패스워드</label>
+            </div>
+            <div>
+                <input type="password" id="usrPw" name="usrPw" class="width120" value="1234567890" autocomplete="off">
+            </div>
+            <div>
+                <input type="button" value="로그인" class="width060" onClick="clickLogin();">
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+</body>
+
+<script>
+    function clickLogin()
+    {
+        // 아래 로그인 I/F 변경
+        if( document.getElementById("usrId").value == "admin" )
+        {
+            if( document.getElementById("usrPw").value == "1234567890" )
+            {
+                document.location.href = "/lyt/index.html";
+            }
+            else
+            {
+                alert("아이디 또는 패스워드를 확인해 주세요.");
+                document.getElementById("usrId").value = "";
+                document.getElementById("usrPw").value = "";
+                document.getElementById("usrId").focus();
+            }
+        }
+        else
+        {
+            alert("아이디 또는 패스워드를 확인해 주세요.");
+            document.getElementById("usrId").value = "";
+            document.getElementById("usrPw").value = "";
+            document.getElementById("usrId").focus();
+        }
+
+//      // CORS 오류가 발생하므로 일단 주석 처리 */
+//      /* 입력된 데이터 Json 형식으로 변경 */
+//      var reqJsn = new Object();
+//      reqJsn.user = document.getElementById("usrId").value;
+//      reqJsn.pass = document.getElementById("usrPw").value;
+//
+//      /* 통신에 사용 될 XMLHttpRequest 객체 정의 */
+//      httpRequest = new XMLHttpRequest();
+//
+//      /* httpRequest의 readyState가 변화했을때 함수 실행 */
+//      httpRequest.onreadystatechange = () => {
+//
+//          /* readyState가 Done이고 응답 값이 200일 때, 받아온 response로 name과 age를 그려줌 */
+//          if (httpRequest.readyState === XMLHttpRequest.DONE) 
+//          {
+//              if (httpRequest.status === 200) 
+//              {
+//                  alert(httpRequest.response);
+//                  /*
+//                  var result = httpRequest.response;
+//                  document.getElementById("name").innerText = result.name;
+//                  document.getElementById("age").innerText = result.age;
+//                  */
+//              }
+//              else
+//              {
+//                  alert('request에 뭔가 문제가 있어요.');
+//              }
+//          }
+//      };
+//      
+//      /* Post 방식으로 요청 */
+//      httpRequest.open('POST', 'https://admin.fxd.kr/user/login', true);
+//      
+//      /* Response Type을 Json으로 사전 정의 */
+//      httpRequest.responseType = "json";
+//
+//      /* 요청 Header에 컨텐츠 타입은 Json으로 사전 정의 */
+//      httpRequest.setRequestHeader("Content-Type", "application/json");
+//      //httpRequest.setRequestHeader("Access-Control-Allow-Origin", "*");
+//
+//      /* 정의된 서버에 Json 형식의 요청 Data를 포함하여 요청을 전송 */
+//      httpRequest.send(JSON.stringify(reqJsn));
+    }
+</script>
+
+</html>
